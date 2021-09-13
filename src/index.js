@@ -1,0 +1,58 @@
+// Import the functions you need from the SDKs you need
+var firebaseApp = require('firebase/app');
+var admin = require('firebase-admin')
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+admin.initializeApp({
+  apiKey: "AIzaSyAhsAywBkWsJcHsE8l0p0g0mPfl3Yelxb4",
+  authDomain: "hackathon-daca0.firebaseapp.com",
+  projectId: "hackathon-daca0",
+  storageBucket: "hackathon-daca0.appspot.com",
+  messagingSenderId: "172068626081",
+  appId: "1:172068626081:web:caf17c769e22242023dae0"
+});
+const db = admin.firestore();
+const functions = require("firebase-functions");
+
+
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
+// Automatically allow cross-origin requests
+//app.use(cors({ origin: true }));
+
+app.get('/test', (req, res) => res.send("Test works"));
+
+app.get('/race/:code', async (req, res) =>  {
+    var docRef = db.collection("races").doc(req.params.code);
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            res.send(doc.data());
+        } else {
+            // doc.data() will be undefined in this case
+            res.send("No data");
+        }
+    }).catch((error) => {
+        res.send(error);
+    });
+});
+
+app.post('/race/:code', async (req, res) => {
+
+    db.collection("races").doc(req.params.code).set({
+        status: req.body.status,
+        standings: req.body.standings
+    })
+    .then(() => {
+        res.send('written successfully')
+    })
+    .catch((error) => {
+        console.error("Error writing document: ", error);
+    });
+});
+
+exports.app = functions.https.onRequest(app)
