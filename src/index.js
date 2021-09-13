@@ -6,12 +6,12 @@ var admin = require('firebase-admin')
 
 // Your web app's Firebase configuration
 admin.initializeApp({
-  apiKey: "AIzaSyAhsAywBkWsJcHsE8l0p0g0mPfl3Yelxb4",
-  authDomain: "hackathon-daca0.firebaseapp.com",
-  projectId: "hackathon-daca0",
-  storageBucket: "hackathon-daca0.appspot.com",
-  messagingSenderId: "172068626081",
-  appId: "1:172068626081:web:caf17c769e22242023dae0"
+    apiKey: "AIzaSyDMUgLGL8_MA9vMgV7ixHTNyTYJmq8LcfA",
+    authDomain: "polyaihackathon.firebaseapp.com",
+    projectId: "polyaihackathon",
+    storageBucket: "polyaihackathon.appspot.com",
+    messagingSenderId: "348343745852",
+    appId: "1:348343745852:web:6e0d0721c1020f10967239"
 });
 const db = admin.firestore();
 const functions = require("firebase-functions");
