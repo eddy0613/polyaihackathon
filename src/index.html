@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Directly Accessing Street View Data</title>
+    <title>Street View Controls</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="./index.js" key="AIzaSyCiZ8DH3D9IrJMhUe0uG6eGM1hO9IXdpQ4"></script>
+    <script src="./index.js"></script>
   </head>
   <body>
-    <!-- <div id="map" style="width: 45%; height: 100%; float: left"></div> -->
-    <div id="pano" style="width: 100%; height: 100%; float: left"></div>
+    <div id="map"></div>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiZ8DH3D9IrJMhUe0uG6eGM1hO9IXdpQ4&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initPano&libraries=&v=weekly"
       async
     ></script>
   </body>
